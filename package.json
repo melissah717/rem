@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass styles.scss -o styles.css"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +13,8 @@
   "dependencies": {
     "@types/gsap": "^3.0.0",
     "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "node-sass": "^9.0.0"
   }
 }

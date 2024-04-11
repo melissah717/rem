@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: white;
+  background: black;
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 6rem);
+  font-weight: 800;
+  text-align: left;
+  letter-spacing: 0.5em;
+  margin-right: -0.2em;
+  color: black;
+  width: 30%;
+}
+h2 {
+  font-size: clamp(1rem, 5vw, 5rem);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5em;
+  margin-right: -0.5em;
+  color: hsl(0, 0, 80%);
+  width: 90vw;
+  max-width: 1200px;
+}
+
+header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  width: 100%;
+  z-index: 3;
+  height: 7em;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(0.66rem, 2vw, 1rem);
+  letter-spacing: 0.5em;
+}
+
+img {
+  height: 5rem;
+}
+
+section {
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  visibility: hidden;
+}
+
+section iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  min-width: 250.77777778vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* If it's for background use, you might want to disable interaction */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+section .outer,
+section .inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+section .bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+section .bg h2 {
+  z-index: 2;
+}
+
+section .bg .clip-text {
+  overflow: hidden;
+}
+.first .bg {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),
+    /* url(https://images.unsplash.com/photo-1617478755490-e21232a5eeaf?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU1NjM5NA&ixlib=rb-1.2.1&q=75&w=1920); */
+      url("images/kush.png");
+}
+
+.second .bg {
+  background-color: black;
+}
+/* background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    url("https://images.unsplash.com/photo-1617128734662-66da6c1d3505?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzc3NTM3MA&ixlib=rb-1.2.1&q=75&w=1920");
+} */
+
+.second {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.video-background .content,
+.content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 20px;
+  width: 30%;
+  background-color: #FFF;
+}
+
+.third .bg {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    background-color: yellow;
+}
+
+.fourth .bg {
+  background-color: black;
+  height: 100%;
+
+
+  /* background-image: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.3) 100%
+          ),
+        url(https://images.unsplash.com/photo-1617412327653-c29093585207?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU2MDgzMQ&ixlib=rb-1.2.1&q=75&w=1920);
+     */
+}
+
+.fifth .bg {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    /* url(https://images.unsplash.com/photo-1617478755490-e21232a5eeaf?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU1NjM5NA&ixlib=rb-1.2.1&q=75&w=1920); */
+      url("images/no_bg.png");
+}
+
+.form {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 50%; 
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.input {
+    width: 95%;
+    height: 30px;
+}
+
+.button {
+    width: 40%; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.5em;
+  }
+
+
+  .button:hover {
+    background-color: white;
+    color: black;
+    }
+  
+
+    h3{
+       font-size: 2rem; 
+       line-height: 10px;
+       letter-spacing: 10px;
+    }
+

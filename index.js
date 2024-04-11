@@ -5,6 +5,7 @@ let sections = document.querySelectorAll("section"),
     headings = gsap.utils.toArray(".section-heading"),
     outerWrappers = gsap.utils.toArray(".outer"),
     innerWrappers = gsap.utils.toArray(".inner"),
+    
     currentIndex = -1,
     wrap = gsap.utils.wrap(0, sections.length),
     animating;
@@ -12,46 +13,68 @@ let sections = document.querySelectorAll("section"),
 gsap.set(outerWrappers, { yPercent: 100 });
 gsap.set(innerWrappers, { yPercent: -100 });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const logo = document.querySelector('.logo');
+    const logoPulse = document.querySelector('.logo-pulse');
+  
+    // GSAP 3 syntax
+    const timeline = gsap.timeline({
+        repeat: -1,
+    });
+  
+    timeline
+      .to(logo, {
+        scale: 1.1,
+        rotation: 5,
+        ease: "back.out(3)",
+        duration: 2,
+      })
+      .to(logo, {
+        scale: 0.9,
+        rotation: '-5',
+        ease: "elastic.out(2, 4)",
+        duration: 2,
+      })
+
+  });
+
+
 function gotoSection(index, direction) {
-    index = wrap(index); // make sure it's valid
+    index = wrap(index);
     animating = true;
     let fromTop = direction === -1,
         dFactor = fromTop ? -1 : 1,
         tl = gsap.timeline({
-            defaults: { duration: 1.15, ease: "power2.inOut" },
+            defaults: {
+                duration: 1.15, ease: "power2.inOut"
+            },
             onComplete: () => animating = false
         });
     if (currentIndex >= 0) {
-        // The first time this function runs, current is -1
         gsap.set(sections[currentIndex], { zIndex: 0 });
-        tl.to(images[currentIndex], { yPercent: -15 * dFactor, clearProps: "transform" })
-        .set(sections[currentIndex], { autoAlpha: 0, clearProps: "all" });
+        tl.to(images[currentIndex], { yPercent: -15 * dFactor, clearProps: "all" })
+            .set(sections[currentIndex], { autoAlpha: 0, clearProps: "all" });
     }
     gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
     tl.fromTo([outerWrappers[index], innerWrappers[index]], {
-        yPercent: i => i ? -100 * dFactor : 100 * dFactor
+        yPercent: i => {
+            let initialValue = i ? -100 * dFactor : 100 * dFactor;
+            console.log(`Initial yPercent for section ${index}: ${initialValue}`);
+            return initialValue;
+        }
     }, {
-        yPercent: 0
+        yPercent: 0,
+        onStart: () => console.log(`Animating wrappers to yPercent: 0 in section ${index}`),
+        onComplete: () => console.log(`Wrappers animated to yPercent: 0 in section ${index}`)
     }, 0)
         .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
-        .from("#video-1", {
-             x: -800,
-             ease: "power2.inOut",
-             duration: 0.4,
-             scrollTrigger: {
-                trigger: ".second",
-             }
-            })
     console.log("index", index)
     console.log("current index", currentIndex)
     currentIndex = index;
+    updateHeaderVisibilityBasedOnSection();
 }
-gsap.to('.video-container iframe', {
-    height: '100%', // Animate the height to full viewport height
-    ease: 'none',
-  });
 
-console.log(sections.length)
 Observer.create({
     type: "wheel,touch,pointer",
     wheelSpeed: -1,
@@ -62,4 +85,63 @@ Observer.create({
 });
 
 gotoSection(0);
+updateHeaderVisibilityBasedOnSection();
+
+//hide header on certain pages
+function updateHeaderVisibilityBasedOnSection() {
+    const header = document.getElementById('header');
+    if (currentIndex === 0 || currentIndex === 1) {
+        header.style.opacity = 0;
+    } else {
+        header.style.opacity = 1;
+    }
+}
+
+
+//emailJS
+document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("CDDPZ6LKugVXe8z8p")
+    const form = document.getElementById("form")
+
+    document.getElementById("form").addEventListener("submit", function (event) {
+        event.preventDefault()
+        document.querySelectorAll(".error-message").forEach((el) => el.textContent = "")
+        let valid = true;
+
+        const name = document.getElementById("name").value
+        if (name.length === 0 || name.length > 100) {
+            document.getElementById("name-error").textContent = "Invalid"
+            valid = false
+        }
+
+        const email = document.getElementById("email").value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email) || email.length > 100) {
+            document.getElementById("email-error").textContent = "Please enter a valid email address (max 100 characters).";
+            valid = false;
+        }
+
+        const message = document.getElementById("message").value;
+        if (message.length === 0) {
+            document.getElementById("message-error").textContent = "Message cannot be empty.";
+            valid = false;
+        }
+
+        if (valid) {
+            var parameters = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value,
+                reply_to: document.getElementById("email").value
+            }
+
+            emailjs.send("service_uskbhf4", "template_ay4y82p", parameters).then(function (response) {
+                console.log("OK", response.status, response.text);
+                form.reset()
+            }, function (error) {
+                console.log("ERROR", error)
+            })
+        }
+    })
+})
 

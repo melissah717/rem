@@ -1,8 +1,7 @@
 gsap.registerPlugin(Observer, ScrollTrigger);
-
+console.log(getComputedStyle(document.querySelector('.header-img')).display)
 let sections = document.querySelectorAll("section"),
     images = document.querySelectorAll(".bg"),
-    headings = gsap.utils.toArray(".section-heading"),
     outerWrappers = gsap.utils.toArray(".outer"),
     innerWrappers = gsap.utils.toArray(".inner"),
     currentIndex = -1,
@@ -15,25 +14,20 @@ gsap.set(innerWrappers, { yPercent: -100 });
 
 document.addEventListener('DOMContentLoaded', function() {
     const logo = document.querySelector('.logo');
-    const iframes = gsap.utils.toArray('#player');
+    const iframes = gsap.utils.toArray('.small-video');
 
+
+    iframes.forEach((video, index) => {
+        const direction = index % 2 === 0 ? -20 :20;
+
+        gsap.set(video, { yPercent: direction })
+    })
     gsap.set(iframes, {  autoAlpha: 1 }); // Ensure elements are visible but moved
 
-    ScrollTrigger.batch(iframes, {
-      onEnter: (batch) => {
-        console.log("Entering view");
-        gsap.to(batch, { autoAlpha:1, stagger: 0.2, overwrite: true });
-      },
-    //   start: "top center",
-    //   end: "bottom center",
-      toggleActions: "play none none none"
-    });
 
-    const timeline = gsap.timeline({
+    const tl = gsap.timeline({
         repeat: -1,
-    });
-  
-    timeline
+    })
       .to(logo, {
         scale: 1.1,
         rotation: 5,
@@ -56,44 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
         preventDefault: true
     });
 
-    gotoSection(0);
+    gotoSection(0, 1);
     updateHeaderVisibilityBasedOnSection();
-    console.log("Setting up Observer", gsap, Observer);
-
-    Observer.create({
-      target: ".video-container",
-      type: "visibility",
-      onEnter: () => console.log("Entered"),
-      onLeave: () => console.log("Left")
-    });
-    
-    console.log("Observer should be set up now.");
 
     const quote = document.querySelector('#quote');
 
     if (quote) {
         quote.innerHTML = quote.textContent.replace(/\S/g, "<span class='char'>$&</span>");
-      
+        
         const chars = document.querySelectorAll('.char');
-        const tl = gsap.timeline({ paused: true });
+        const tl = gsap.timeline({ paused: false });
         tl.to(chars, {
           duration: 4,
           color: '#ffffff',
           stagger: 0.1,
           ease: 'none',
-        });
-        Observer.create({
-            target: ".video-container",
-            type: "visibility",
-            onEnter: () => console.log("Entered"),
-            onLeave: () => console.log("Left")
-          });
-        // Set up the Observer
-        Observer.create({
-          target: ".video-container", // the element to watch
-          type: "visibility", // watch for visibility changes
-          onEnter: () => {tl.play(); console.log("onEnter")}, // play the timeline when the element enters the viewport
-          onLeave: () => {tl.reverse(); console.log("onEnter")} // optionally reverse the timeline when the element leaves the viewport
         });
       }
     // Initialize emailJS
@@ -193,15 +164,12 @@ updateHeaderVisibilityBasedOnSection();
 //hide header on certain pages
 function updateHeaderVisibilityBasedOnSection() {
     const header = document.getElementById('header');
-    if (currentIndex === 0 || currentIndex === 1) {
+    if (currentIndex === 0) {
         header.style.opacity = 0;
     } else {
         header.style.opacity = 1;
     }
 }
-
-
-//emailJS
 
 })
 

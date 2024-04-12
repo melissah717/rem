@@ -51,7 +51,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5%;
+  padding: 2% 2%;
   width: 100%;
   z-index: 3;
   height: 7em;
@@ -63,7 +63,7 @@ header {
 }
 
 .header-img {
-  height: 5rem;
+  height: 4rem;
 }
 
 .logo-image {
@@ -75,8 +75,7 @@ header {
 }
 
 .fa-quote-left, .fa-quote-right {
-  display: block;
-  font-size: 2rem; 
+  font-size: 1rem; 
   color: red;
 }
 #quote {
@@ -116,14 +115,12 @@ section {
 
 .big-video{
   position: absolute;
-  top: 50%;
-  left: 50%;
+  /* top: 50%;
+  left: 50%; */
   width: 100%;
-  min-width: 250.77777778vh;
-  transform: translate(-50%, -50%);
+  min-width: 180.77777778vh;
   pointer-events: none;
-  min-width: 100%;
-  min-height: 100%;
+  min-height: 80%;
 }
 
 section .outer,
@@ -133,6 +130,13 @@ section .inner {
   overflow-y: hidden;
 }
 
+#header-2 {
+  background-color: black;
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  bottom: 10%;
+}
 
 section .bg {
   display: flex;
@@ -192,21 +196,19 @@ section .bg h2 {
 
 
 .fourth .bg {
-  background-image: url('images/no_bg.png'); /* Replace with your actual image path */
+  /* background-image: url('images/no_bg.png'); 
   background-size:50%;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed; /* Optional: This keeps the background fixed during scroll */
+  background-attachment: fixed;  */
   position: relative; 
   display: flex;
   flex-direction: column;
-  align-items: center; /* This will vertically center your .align div */
-  justify-content: space-evenly; /* This will horizontally center your .align div */
+  align-items: center; 
+  justify-content: space-evenly;
 }
-
-/* Style your section header */
 .fourth .section-header {
-  color: yellow; /* Choose a color that contrasts well with your background */
+  color: yellow
   text-align: left;
   font-size: 3rem;
   font-weight: 500;
@@ -271,12 +273,11 @@ section .bg h2 {
 }
 
 .form__input.large-input {
-  width: 100%; /* or however wide you want it to be */
-  height: 5em; /* or more, to make it larger */
-  /* additional styling */
+  width: 100%;
+  height: 5em; 
+
 }
 
-/* Adjust label styling as needed */
 .hidden {
   display: none;
 }
@@ -303,25 +304,66 @@ justify-content: center;
   display: flex;
   /* justify-content: space-around; */
   align-items:center;
-  justify-content: space-between;
+  justify-content: center;
+  /* flex-wrap: wrap */
   /* background-color: white; */
   width: 100%;
+  margin: 0 auto;
   /* transform: rotate(2deg); */
-  background: white;
+
   padding: 1rem;
 }
 
 
 .video-container iframe {
-  width: 30vw;
-  max-height: 150px;
+  width: 20%;
   aspect-ratio: 16/9;
+  margin: 3px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards; /* Animation applied to all iframes */
+}
+
+/* Animation Keyframes */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.video-container iframe:nth-child(1) {
+  animation-delay: 0.2s;  /* First iframe fades in after 0.2 seconds */
+}
+
+.video-container iframe:nth-child(2) {
+  animation-delay: 0.4s;  /* Second iframe fades in after 0.4 seconds */
+}
+
+.video-container iframe:nth-child(3) {
+  animation-delay: 0.6s;  /* Third iframe fades in after 0.6 seconds */
+}
+
+.video-container iframe:nth-child(4) {
+  animation-delay: 0.8s;  /* Fourth iframe fades in after 0.8 seconds */
+}
+
+@media (max-width: 768px) {
+  .video-container {
+      flex-wrap: wrap;  
+      justify-content: space-around;  
+  }
+
+  .video-container iframe {
+      width: 30%; 
+      margin-top: 2px;
+      border: 1px solid black;
+  }
 }
 
 .small-video {
-  /* width: 50%; */
-  /* height: auto; */
-  /* max-height: 200px; */
+  overflow: hidden;
 }
 
 .fourth .bg {

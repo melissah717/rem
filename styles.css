@@ -67,10 +67,16 @@ header {
 }
 
 .logo-image {
-  height: 5rem;
+  height: 4.5rem;
   width: auto;
   object-fit: cover;
   border-radius: 50%
+}
+
+.fa-quote-left, .fa-quote-right {
+  display: block; /* Makes icons appear on their own lines */
+  font-size: 2rem; /* Adjust size as needed */
+  color: red; /* Adjust color as needed */
 }
 
 section {

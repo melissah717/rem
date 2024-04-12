@@ -62,14 +62,14 @@ header {
 }
 
 .header-img {
-  height: 4rem;            /* Height of the visible circle */
-  width: 4rem;             /* Width of the visible circle, should be the same as height */
-  background-image: url('/images/logo2.jpg'); /* Path to your image */
+  height: 4rem; 
+  width: 4rem; 
+  background-image: url('/images/logo2.jpg'); 
   background-repeat: no-repeat;
-  background-position: center;  /* Adjust as necessary to center the inner circle */
-  background-size: cover;       /* Adjust this value so that the inner circle fits the element */
+  background-position: center;  
+  background-size: cover;     
   border-radius: 50%;
-  border: none;                /* Remove any border if present */
+  border: none;              
 }
 
 .logo-image {
@@ -376,6 +376,12 @@ justify-content: center;
   }
 }
 
+@media screen and (max-width: 768px) {
+  .section-header {
+    font-size: 1rem;
+    max-width: 100%
+  }
+}
 .small-video {
   overflow: hidden;
 }

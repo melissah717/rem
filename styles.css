@@ -8,6 +8,11 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  body {
+    padding: 2rem;
+  }
+}
 a {
   color: red;
 }
@@ -90,10 +95,9 @@ header {
 
 .scroll-indicator {
   position: absolute;
-  bottom: 2rem; 
+  bottom: 20%; 
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 3rem;
+  font-size: 2rem;
   color: white;
   animation: pulse 3.5s infinite;
 }

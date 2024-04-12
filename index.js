@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.set(video, { yPercent: direction })
         video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
     })
-    gsap.set(iframes, {  autoAlpha: 1 }); // Ensure elements are visible but moved
+    gsap.set(iframes, {  autoAlpha: 1 });
 
 
     const logoTimeline = gsap.timeline({
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
     // Initialize emailJS
-    emailjs.init("CDDPZ6LKugVXe8z8p");
+    emailjs.init("bdJh2-DiehX5coUUN");
     const form = document.getElementById("form");
 
     form.addEventListener("submit", function (event) {
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 reply_to: document.getElementById("email").value
             }
 
-            emailjs.send("service_uskbhf4", "template_ay4y82p", parameters).then(function (response) {
+            emailjs.send("service_zrkc0jt","template_7usr8zf", parameters).then(function (response) {
                 console.log("OK", response.status, response.text);
                 form.reset()
             }, function (error) {

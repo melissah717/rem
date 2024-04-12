@@ -26,6 +26,9 @@
           </div>
         </div>
       </div>
+      <div class="scroll-indicator">
+        <i class="fa fa-arrow-down"></i>
+      </div>
     </section>
 
     <section class="second section">
@@ -36,17 +39,18 @@
             frameborder="0"
             allowfullscreen
             allow="autoplay; fullscreen"
+            class="big-video"
           ></iframe>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="third section">
+    <!-- <section class="third section">
       <div class="outer">
         <div class="inner">
           <div class="bg">
-            <h1 class="section-heading">cool stuff</h1>
+            <h2 class="section-heading">cool stuff</h2>
               <iframe
                 src="https://player.vimeo.com/video/932083368?background=1&muted=1&autoplay=1"
                 frameborder="0"
@@ -57,27 +61,57 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="fourth section">
+    </section> -->
+
+
+    <section class="third section">
       <div class="outer">
         <div class="inner">
-          <div class="bg">
-            <h2 class="section-heading">
-              <i class="fa fa-quote-left" aria-hidden="true"></i>It's quite fun to do the impossible.<i class="fa fa-quote-right" aria-hidden="true"></i>
+          <div class="bg bg4">
+            <h2 class="section-heading" id="quote">
+              <i class="fa fa-quote-left"></i>It's quite fun to do the impossible.<i class="fa fa-quote-right"></i>
             </h2>
-
+            <div class="video-container">
+              <iframe
+                src="https://player.vimeo.com/video/933679608?background=1&muted=1&autoplay=1"
+                frameborder="0"
+                allowfullscreen
+                allow="autoplay; fullscreen"
+                class="small-video"
+              ></iframe>
+              <iframe
+                src="https://player.vimeo.com/video/933679709?background=1&muted=1&autoplay=1"
+                frameborder="0"
+                allowfullscreen
+                allow="autoplay; fullscreen"
+                class="small-video"
+              ></iframe>              
+              <iframe
+              src="https://player.vimeo.com/video/933679735?background=1&muted=1&autoplay=1"
+              frameborder="0"
+              allowfullscreen
+              allow="autoplay; fullscreen"
+              class="small-video"
+            ></iframe>              
+            <iframe
+            src="https://player.vimeo.com/video/933679668?background=1&muted=1&autoplay=1"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; fullscreen"
+            class="small-video"
+          ></iframe>
           </div>
+            </div>
+
         </div>
       </div>
     </section>
 
-    <section class="fifth section">
+    <section class="fourth section">
       <div class="outer">
         <div class="inner">
           <div class="bg">
-
-<h2 class
-
+            <h2 class="section-header"><a href="mailto:xXwarlordXx@gmail.com">paul@gmail.com</a> or send me a message here</h2>
             <div class="align">
               <div class="grid">
                 <form action="#" method="POST" class="form login" id="form">
@@ -95,27 +129,25 @@
             
                   <div class="form__field">
                     <label for="message" class="hidden">Message</label>
-                    <textarea id="message" name="message" class="form__input" placeholder="message" required></textarea>
+                    <input type="text" id="message" name="message" class="form__input large-input" placeholder="message" required></textarea>
                     <small class="error-message" id="message-error"></small>
                   </div>
             
                   <div class="form__field">
-                    <button type="submit" value="Submit">send me a message</button>
+                    <button type="submit" value="Submit">submit</button>
                   </div>
                 </form>
               </div>
             </div>
 
 
-
-
           </div>
         </div>
       </div>
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/Observer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/Observer.min.js"></script>
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
     
     <script type="module" src="index.js"></script>

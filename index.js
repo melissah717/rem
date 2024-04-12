@@ -5,7 +5,6 @@ let sections = document.querySelectorAll("section"),
     headings = gsap.utils.toArray(".section-heading"),
     outerWrappers = gsap.utils.toArray(".outer"),
     innerWrappers = gsap.utils.toArray(".inner"),
-    
     currentIndex = -1,
     wrap = gsap.utils.wrap(0, sections.length),
     animating;
@@ -16,9 +15,20 @@ gsap.set(innerWrappers, { yPercent: -100 });
 
 document.addEventListener('DOMContentLoaded', function() {
     const logo = document.querySelector('.logo');
-    const logoPulse = document.querySelector('.logo-pulse');
-  
-    // GSAP 3 syntax
+    const iframes = gsap.utils.toArray('#player');
+
+    gsap.set(iframes, {  autoAlpha: 1 }); // Ensure elements are visible but moved
+
+    ScrollTrigger.batch(iframes, {
+      onEnter: (batch) => {
+        console.log("Entering view");
+        gsap.to(batch, { autoAlpha:1, stagger: 0.2, overwrite: true });
+      },
+    //   start: "top center",
+    //   end: "bottom center",
+      toggleActions: "play none none none"
+    });
+
     const timeline = gsap.timeline({
         repeat: -1,
     });
@@ -35,9 +45,102 @@ document.addEventListener('DOMContentLoaded', function() {
         rotation: '-5',
         ease: "elastic.out(2, 4)",
         duration: 2,
-      })
+      });
 
-  });
+    Observer.create({
+        type: "wheel,touch,pointer",
+        wheelSpeed: -1,
+        onDown: () => !animating && gotoSection(currentIndex - 1, -1),
+        onUp: () => !animating && gotoSection(currentIndex + 1, 1),
+        tolerance: 5,
+        preventDefault: true
+    });
+
+    gotoSection(0);
+    updateHeaderVisibilityBasedOnSection();
+    console.log("Setting up Observer", gsap, Observer);
+
+    Observer.create({
+      target: ".video-container",
+      type: "visibility",
+      onEnter: () => console.log("Entered"),
+      onLeave: () => console.log("Left")
+    });
+    
+    console.log("Observer should be set up now.");
+
+    const quote = document.querySelector('#quote');
+
+    if (quote) {
+        quote.innerHTML = quote.textContent.replace(/\S/g, "<span class='char'>$&</span>");
+      
+        const chars = document.querySelectorAll('.char');
+        const tl = gsap.timeline({ paused: true });
+        tl.to(chars, {
+          duration: 4,
+          color: '#ffffff',
+          stagger: 0.1,
+          ease: 'none',
+        });
+        Observer.create({
+            target: ".video-container",
+            type: "visibility",
+            onEnter: () => console.log("Entered"),
+            onLeave: () => console.log("Left")
+          });
+        // Set up the Observer
+        Observer.create({
+          target: ".video-container", // the element to watch
+          type: "visibility", // watch for visibility changes
+          onEnter: () => {tl.play(); console.log("onEnter")}, // play the timeline when the element enters the viewport
+          onLeave: () => {tl.reverse(); console.log("onEnter")} // optionally reverse the timeline when the element leaves the viewport
+        });
+      }
+    // Initialize emailJS
+    emailjs.init("CDDPZ6LKugVXe8z8p");
+    const form = document.getElementById("form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault()
+        document.querySelectorAll(".error-message").forEach((el) => el.textContent = "")
+        let valid = true;
+
+        const name = document.getElementById("name").value
+        if (name.length === 0 || name.length > 100) {
+            document.getElementById("name-error").textContent = "Invalid"
+            valid = false
+        }
+
+        const email = document.getElementById("email").value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email) || email.length > 100) {
+            document.getElementById("email-error").textContent = "Please enter a valid email address (max 100 characters).";
+            valid = false;
+        }
+
+        const message = document.getElementById("message").value;
+        if (message.length === 0) {
+            document.getElementById("message-error").textContent = "Message cannot be empty.";
+            valid = false;
+        }
+
+        if (valid) {
+            var parameters = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value,
+                reply_to: document.getElementById("email").value
+            }
+
+            emailjs.send("service_uskbhf4", "template_ay4y82p", parameters).then(function (response) {
+                console.log("OK", response.status, response.text);
+                form.reset()
+            }, function (error) {
+                console.log("ERROR", error)
+            })
+        }
+    })
+
 
 
 function gotoSection(index, direction) {
@@ -82,7 +185,7 @@ Observer.create({
     onUp: () => !animating && gotoSection(currentIndex + 1, 1),
     tolerance: 5,
     preventDefault: true
-});
+})
 
 gotoSection(0);
 updateHeaderVisibilityBasedOnSection();
@@ -99,49 +202,6 @@ function updateHeaderVisibilityBasedOnSection() {
 
 
 //emailJS
-document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("CDDPZ6LKugVXe8z8p")
-    const form = document.getElementById("form")
 
-    document.getElementById("form").addEventListener("submit", function (event) {
-        event.preventDefault()
-        document.querySelectorAll(".error-message").forEach((el) => el.textContent = "")
-        let valid = true;
-
-        const name = document.getElementById("name").value
-        if (name.length === 0 || name.length > 100) {
-            document.getElementById("name-error").textContent = "Invalid"
-            valid = false
-        }
-
-        const email = document.getElementById("email").value;
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email) || email.length > 100) {
-            document.getElementById("email-error").textContent = "Please enter a valid email address (max 100 characters).";
-            valid = false;
-        }
-
-        const message = document.getElementById("message").value;
-        if (message.length === 0) {
-            document.getElementById("message-error").textContent = "Message cannot be empty.";
-            valid = false;
-        }
-
-        if (valid) {
-            var parameters = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                message: document.getElementById("message").value,
-                reply_to: document.getElementById("email").value
-            }
-
-            emailjs.send("service_uskbhf4", "template_ay4y82p", parameters).then(function (response) {
-                console.log("OK", response.status, response.text);
-                form.reset()
-            }, function (error) {
-                console.log("ERROR", error)
-            })
-        }
-    })
 })
 

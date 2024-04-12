@@ -68,17 +68,44 @@ header {
 
 .logo-image {
   height: 4rem;
+  max-height: 30vh;
   width: auto;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 50%
 }
 
 .fa-quote-left, .fa-quote-right {
-  display: block; /* Makes icons appear on their own lines */
-  font-size: 2rem; /* Adjust size as needed */
-  color: red; /* Adjust color as needed */
+  display: block;
+  font-size: 2rem; 
+  color: red;
+}
+#quote {
+  color: black;
 }
 
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem; 
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: white;
+  animation: pulse 3.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.5);
+    opacity: 0;
+  }
+}
 section {
   height: 100vh;
   width: 100%;
@@ -87,7 +114,7 @@ section {
   visibility: hidden;
 }
 
-section iframe {
+.big-video{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -104,7 +131,6 @@ section .inner {
   width: 100%;
   height: 100%;
   overflow-y: hidden;
-
 }
 
 
@@ -121,12 +147,9 @@ section .bg {
 }
 
 section .bg h2 {
-  z-index: 2;
+  z-index: 3;
 }
 
-section .bg .clip-text {
-  overflow: hidden;
-}
 
 .first .bg {
   background-image: linear-gradient(
@@ -135,28 +158,13 @@ section .bg .clip-text {
       rgba(0, 0, 0, 0.1) 100%
     );
     background-color: black;
-    /* url(https://images.unsplash.com/photo-1617478755490-e21232a5eeaf?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU1NjM5NA&ixlib=rb-1.2.1&q=75&w=1920); */
-      /* url("images/logo.jpg"); */
 }
 
 .second .bg {
   background-color: black;
   height: 100%;
 }
-/* background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.3) 100%
-    ),
-    url("https://images.unsplash.com/photo-1617128734662-66da6c1d3505?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzc3NTM3MA&ixlib=rb-1.2.1&q=75&w=1920");
-} */
-/* 
-.second {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-} */
- 
+
 .video-background .content,
 .content {
   position: relative;
@@ -168,6 +176,12 @@ section .bg .clip-text {
 }
 
 .third .bg {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.fourth .bg {
   background-image: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.6) 0%,
@@ -176,121 +190,95 @@ section .bg .clip-text {
     url("images/kush.png");
 }
 
+
 .fourth .bg {
-  background-color: black;
-  height: 100%;
-
-
-  /* background-image: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.6) 0%,
-            rgba(0, 0, 0, 0.3) 100%
-          ),
-        url(https://images.unsplash.com/photo-1617412327653-c29093585207?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU2MDgzMQ&ixlib=rb-1.2.1&q=75&w=1920);
-     */
-}
-
-.fifth .bg {
-  background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.2) 100%
-    ),
-    /* url(https://images.unsplash.com/photo-1617478755490-e21232a5eeaf?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzU1NjM5NA&ixlib=rb-1.2.1&q=75&w=1920); */
-      url("images/no_bg.png");
-}
-
-.align {
+  background-image: url('images/no_bg.png'); /* Replace with your actual image path */
+  background-size:50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* Optional: This keeps the background fixed during scroll */
+  position: relative; 
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  min-width: 80vw;
-  background:transparent;
+  flex-direction: column;
+  align-items: center; /* This will vertically center your .align div */
+  justify-content: space-evenly; /* This will horizontally center your .align div */
 }
 
-.grid {
-  width: calc(100% - 40px);
-  max-width: 500px;
-  margin: 0 auto;
+/* Style your section header */
+.fourth .section-header {
+  color: yellow; /* Choose a color that contrasts well with your background */
+  text-align: left;
+  font-size: 3rem;
+  font-weight: 500;
+  z-index: 2;
+  letter-spacing: 0px;
+  width: 100vw;
 }
 
-.form.login {
-  display: grid;
-  gap: 16px;
+.fourth .align {
   background: black;
-  padding: 20px;
+  padding: 2rem;
   border-radius: 8px;
-}
-
-.form__field {
-  position: relative;
-}
-
-.form__input,
-.form__field textarea {
   width: 100%;
-  padding: 15px;
-  border-radius: 4px;
-  background-color: #363b41;
-  border: 2px solid #363b41;
-  color: #fff;
-  font-size: 16px;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
-.form__input::placeholder,
-.form__field textarea::placeholder {
-  color: #aaa;
+
+.fourth .form {
+  display: grid;
+  gap: 1rem;
 }
 
-.form__input:focus,
-.form__field textarea:focus {
-  outline: none;
-  border-color: rgb(142, 119 , 91);
+.fourth .form__input,
+.fourth .form textarea {
+  box-border: none;
+  background-color: grey; 
+  color: white; 
+  height: 3rem;
+  width: 100%;
+  font-size: 2rem;
 }
 
-.form__field input[type="submit"] {
-  cursor: pointer;
-  background-color: rgb(142, 119 , 91);
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
+.fourth .form__input::placeholder,
+.fourth .form textarea::placeholder {
+  color: black;
+  font-family: inherit
+  font-size: 2rem;
+}
+
+.fourth .form__field button {
+  background-color: white; /* White button */
+  color: black; /* Black text */
   border: none;
+  cursor: pointer;
   width: 100%;
   height: 4rem;
+  font-size: 3rem;
 }
 
-.form__field input[type="submit"]:hover,
-.form__field input[type="submit"]:focus {
-  background-color: rgb(142, 119 , 91);
+.fourth .form__field button:hover {
+  background-color: green;
+  font-size: 3rem;
+  font-weight: 900;
+  transform: rotate(3deg)
 }
-
-.form__input::placeholder,
-.form__field textarea::placeholder {
-  color: white;
-  font-family: "Plus Jakarta Sans", sans-serif; /* Ensure this matches your form's font */
-  opacity: 1; /* For some browsers that reduce the opacity */
-}
-
 .error-message {
   color: #ff3860;
   font-size: 14px;
   margin-top: 5px;
 }
 
+.form__input.large-input {
+  width: 100%; /* or however wide you want it to be */
+  height: 5em; /* or more, to make it larger */
+  /* additional styling */
+}
+
 /* Adjust label styling as needed */
 .hidden {
   display: none;
-}
-
-button {
-  width: 100%;
-  height: 4rem;
-}
-
-button:hover {
-  scale: 1.1;
-
 }
 
 .logo-wrapper {
@@ -310,3 +298,34 @@ justify-content: center;
   height: 700px;
   opacity: 0.3;
 }
+
+.video-container {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items:center;
+  justify-content: space-between;
+  /* background-color: white; */
+  width: 100%;
+  /* transform: rotate(2deg); */
+  background: white;
+  padding: 1rem;
+}
+
+
+.video-container iframe {
+  width: 30vw;
+  max-height: 150px;
+  aspect-ratio: 16/9;
+}
+
+.small-video {
+  /* width: 50%; */
+  /* height: auto; */
+  /* max-height: 200px; */
+}
+
+.fourth .bg {
+  display: flex;
+  flex-direction: column;
+}
+

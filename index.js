@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     gsap.set(iframes, {  autoAlpha: 1 }); // Ensure elements are visible but moved
 
 
-    const tl = gsap.timeline({
+    const logoTimeline = gsap.timeline({
         repeat: -1,
     })
       .to(logo, {
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ease: "elastic.out(2, 4)",
         duration: 2,
       });
+
 
     Observer.create({
         type: "wheel,touch,pointer",
@@ -59,8 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         quote.innerHTML = quote.textContent.replace(/\S/g, "<span class='char'>$&</span>");
         
         const chars = document.querySelectorAll('.char');
-        const tl = gsap.timeline({ paused: false });
-        tl.to(chars, {
+        const charsTimeline = gsap.timeline().to(chars, {
           duration: 4,
           color: '#ffffff',
           stagger: 0.1,
@@ -121,7 +121,7 @@ function gotoSection(index, direction) {
         dFactor = fromTop ? -1 : 1,
         tl = gsap.timeline({
             defaults: {
-                duration: 1.15, ease: "power2.inOut"
+                duration: 1, ease: "power2.inOut"
             },
             onComplete: () => animating = false
         });
@@ -158,10 +158,9 @@ Observer.create({
     preventDefault: true
 })
 
-gotoSection(0);
+// gotoSection(0, 1);
 updateHeaderVisibilityBasedOnSection();
 
-//hide header on certain pages
 function updateHeaderVisibilityBasedOnSection() {
     const header = document.getElementById('header');
     if (currentIndex === 0) {

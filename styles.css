@@ -9,8 +9,7 @@
 }
 
 a {
-  color: #fff;
-  text-decoration: none;
+  color: red;
 }
 
 body {
@@ -74,7 +73,7 @@ header {
   border-radius: 50%
 }
 
-.fa-quote-left, .fa-quote-right {
+.fas-quote-left, .fas-quote-right {
   font-size: 1rem; 
   color: red;
 }
@@ -169,6 +168,9 @@ section .bg h2 {
   height: 100%;
 }
 
+.disney {
+  color: red;
+}
 .video-background .content,
 .content {
   position: relative;
@@ -196,11 +198,6 @@ section .bg h2 {
 
 
 .fourth .bg {
-  /* background-image: url('images/no_bg.png'); 
-  background-size:50%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;  */
   position: relative; 
   display: flex;
   flex-direction: column;
@@ -208,13 +205,12 @@ section .bg h2 {
   justify-content: space-evenly;
 }
 .fourth .section-header {
-  color: yellow
-  text-align: left;
-  font-size: 3rem;
-  font-weight: 500;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  background: black;
+  font-weight: 300;
   z-index: 2;
-  letter-spacing: 0px;
-  width: 100vw;
+  letter-spacing: 5px;
+  width: fit-content;
 }
 
 .fourth .align {
@@ -222,9 +218,10 @@ section .bg h2 {
   padding: 2rem;
   border-radius: 8px;
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 2;
+  opacity: 0.9
 }
 
 
@@ -233,38 +230,48 @@ section .bg h2 {
   gap: 1rem;
 }
 
-.fourth .form__input,
-.fourth .form textarea {
+.fourth .form__input{
   box-border: none;
   background-color: grey; 
-  color: white; 
+  color: black; 
   height: 3rem;
   width: 100%;
   font-size: 2rem;
 }
 
+.fourth .form textarea {
+  height: 15rem;
+}
+
 .fourth .form__input::placeholder,
 .fourth .form textarea::placeholder {
   color: black;
-  font-family: inherit
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 2rem;
 }
 
 .fourth .form__field button {
-  background-color: white; /* White button */
-  color: black; /* Black text */
+  background-color: white; 
+  color: black;
   border: none;
   cursor: pointer;
   width: 100%;
   height: 4rem;
   font-size: 3rem;
 }
+.fourth .form__input, .fourth .form textarea {
+  background-color: grey;
+  color: white;
+  width: 100%;
+  font-size: 2rem;
+  padding: 0.5rem;
+  border: none;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
 
 .fourth .form__field button:hover {
-  background-color: green;
+  background-color: red;
   font-size: 3rem;
-  font-weight: 900;
-  transform: rotate(3deg)
 }
 .error-message {
   color: #ff3860;
@@ -364,10 +371,5 @@ justify-content: center;
 
 .small-video {
   overflow: hidden;
-}
-
-.fourth .bg {
-  display: flex;
-  flex-direction: column;
 }
 

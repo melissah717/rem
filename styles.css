@@ -62,7 +62,14 @@ header {
 }
 
 .header-img {
-  height: 4rem;
+  height: 4rem;            /* Height of the visible circle */
+  width: 4rem;             /* Width of the visible circle, should be the same as height */
+  background-image: url('/images/logo2.jpg'); /* Path to your image */
+  background-repeat: no-repeat;
+  background-position: center;  /* Adjust as necessary to center the inner circle */
+  background-size: cover;       /* Adjust this value so that the inner circle fits the element */
+  border-radius: 50%;
+  border: none;                /* Remove any border if present */
 }
 
 .logo-image {

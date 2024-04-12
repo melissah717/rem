@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const direction = index % 2 === 0 ? -20 :20;
 
         gsap.set(video, { yPercent: direction })
-        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
     })
     gsap.set(iframes, {  autoAlpha: 1 }); // Ensure elements are visible but moved
 

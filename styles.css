@@ -62,8 +62,15 @@ header {
   transition: opacity 0.5 ease out;
 }
 
-img {
+.header-img {
   height: 5rem;
+}
+
+.logo-image {
+  height: 5rem;
+  width: auto;
+  object-fit: cover;
+  border-radius: 50%
 }
 
 section {

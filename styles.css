@@ -412,7 +412,7 @@ justify-content: center;
   }
 
   .align, .grid {
-    padding-bottom: 6em; /* Increased padding to ensure nothing is cut off */
+    padding-bottom: 5em; /* Increased padding to ensure nothing is cut off */
   }
 }
 .small-video {

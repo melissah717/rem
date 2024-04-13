@@ -62,13 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const chars = document.querySelectorAll('.char');
         const charsTimeline = gsap.timeline().to(chars, {
-          duration: 4,
+          duration: 2,
           color: '#ffffff',
-          stagger: 0.1,
+          stagger: 0.08,
           ease: 'none',
+          repeat: -1
         });
       }
-    // Initialize emailJS
+
+      
     emailjs.init("bdJh2-DiehX5coUUN");
     const form = document.getElementById("form");
 

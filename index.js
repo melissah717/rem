@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
 
-      
+
     emailjs.init("bdJh2-DiehX5coUUN");
     const form = document.getElementById("form");
 
@@ -166,7 +166,7 @@ updateHeaderVisibilityBasedOnSection();
 
 function updateHeaderVisibilityBasedOnSection() {
     const header = document.getElementById('header');
-    if (currentIndex === 0) {
+    if (currentIndex === 0 || currentIndex === 3) {
         header.style.opacity = 0;
     } else {
         header.style.opacity = 1;

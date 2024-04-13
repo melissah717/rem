@@ -309,6 +309,11 @@ section .bg h2 {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+@media screen and (max-width: 768px) {
+  .fourth.section-active #header {
+    display: none;
+  }
+}
 .fourth .form__field button:hover {
   background-color: red;
   font-size: 3rem;

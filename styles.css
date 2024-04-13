@@ -236,6 +236,20 @@ section .bg h2 {
   .form__field button {
     font-size: 1em; /* Adjusts font size for better usability on small screens */
   }
+
+  .section-header#email-header {
+    font-size: smaller; /* Reduces the font size on smaller screens */
+    line-height: 1.2; /* Adjusts line height for better readability */
+    text-align: center; /* Centers the text if it's getting cut off */
+    padding: 0 10px; /* Adds padding to prevent the text from touching the edges of the screen */
+    display: block; /* Ensures the element is a block to properly calculate padding */
+    word-wrap: break-word; /* Prevents long words (like email) from overflowing */
+  }
+
+  .section-header#email-header a {
+    display: inline-block; /* Allows the link to break onto a new line if needed */
+    white-space: nowrap; /* Keeps the email address on one line if possible */
+  }
 }
 
 .fourth .align {

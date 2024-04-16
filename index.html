@@ -3,8 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Red Eye Media specializes in content creation with a modern twist. We offer a variety of solutions for video and photography content for your specific need.">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/x-icon" href="/images/logo.jpg" />
     <title>Red Eye Media</title>
   </head>
@@ -12,9 +17,9 @@
   <body>
     <header id="header">
       <div>Red Eye Media</div>
-      <div>
-        <img src="/images/logo-header.jpg" class="header-img"/>
-      </div>
+      <picture>
+        <img src="/images/logo-header.jpg" class="header-img" alt="redeye media logo header "/>
+      </picture>
     </header>
 
     <section class="first section">
@@ -22,7 +27,9 @@
         <div class="inner">
           <div class="bg one">
               <div class="logo">
-                <img src="images/logo-header.jpg" class="logo-image"/>
+                <picture>
+                <img src="images/logo-header.jpg" class="logo-image" alt="redeye media logo on the header"/>
+              </picture>
               </div>
           </div>
         </div>
@@ -124,10 +131,10 @@
         </div>
       </div>
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/Observer.min.js"></script>
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/Observer.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js" defer></script>
     
     <script type="module" src="index.js"></script>
   </body>

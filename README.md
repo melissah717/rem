@@ -1,3 +1,3 @@
 # Red Eye Media
-## Company website
+https://redeyemedia.design
 *built using VanillaJS and GSAP*

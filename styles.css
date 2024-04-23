@@ -132,6 +132,20 @@ section {
   min-height: 80%;
 }
 
+@media (max-width: 768px) {
+  .big-video {
+      max-width: 80%; /* Reduce width on smaller screens */
+      min-width: 90.77777778vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .big-video {
+      max-height: 30vh; 
+      min-width: 90.77777778vh;
+  }
+}
+
 section .outer,
 section .inner {
   width: 100%;

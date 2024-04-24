@@ -371,17 +371,15 @@ picture .logo-image {
   padding: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 430px) {
   #quote {
-    font-size: 1.5rem; /* Or smaller, as needed */
-    margin: 20px 0; /* Adjust margin for proper spacing */
+    font-size: 1rem;
     text-align: center;
   }
   .video-container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
   }
 
   .video-container .small-video {

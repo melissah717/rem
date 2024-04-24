@@ -12,20 +12,27 @@ gsap.set(outerWrappers, { yPercent: 100 });
 gsap.set(innerWrappers, { yPercent: -100 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const logo = document.querySelector('.logo');
+function adjustVideoOffsets() {
+
     const iframes = gsap.utils.toArray('.small-video');
 
 
+    const viewportWidth = window.innerWidth;
     iframes.forEach((video, index) => {
+      if (viewportWidth >= 768) {
+        // Apply the offset on larger screens
         const direction = index % 2 === 0 ? -20 : 20;
-
-        gsap.set(video, { yPercent: direction })
-        video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-    })
-    gsap.set(iframes, { autoAlpha: 1 });
-
-
+        gsap.set(video, { yPercent: direction, immediateRender: false });
+      } else {
+        // Reset the offset on smaller screens
+        gsap.set(video, { yPercent: 0, immediateRender: false });
+      }
+    });
+  }
+document.addEventListener('DOMContentLoaded', function () {
+    const logo = document.querySelector('.logo');
+    adjustVideoOffsets();
+    window.addEventListener('resize', adjustVideoOffsets);
     const logoTimeline = gsap.timeline({
         repeat: -1,
     })
@@ -62,9 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const chars = document.querySelectorAll('.char');
         const charsTimeline = gsap.timeline().to(chars, {
-            duration: 2,
+            duration: 1.5,
             color: '#ffffff',
-            stagger: 0.08,
+            stagger: 0.1,
             ease: 'none',
             repeat: -1
         });

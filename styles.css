@@ -146,6 +146,7 @@ section {
   }
 }
 
+
 section .outer,
 section .inner {
   width: 100%;
@@ -192,9 +193,6 @@ section .bg h2 {
   height: 100%;
 }
 
-.disney {
-  color: red;
-}
 .video-background .content,
 .content {
   position: relative;
@@ -373,17 +371,43 @@ picture .logo-image {
   padding: 1rem;
 }
 
-
 @media (max-width: 768px) {
+  #quote {
+    font-size: 1.5rem; /* Or smaller, as needed */
+    margin: 20px 0; /* Adjust margin for proper spacing */
+    text-align: center;
+  }
   .video-container {
-      flex-wrap: wrap;  
-      justify-content: space-around;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
   }
 
-  .video-container iframe {
-      width: 30%; 
-      margin-top: 2px;
-      border: 1px solid black;
+  .video-container .small-video {
+    width: 80%;
+    /* margin-top: 10px; */
+    height: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  #quote {
+    font-size: 1.5rem; /* Or smaller, as needed */
+    margin: 20px 0; /* Adjust margin for proper spacing */
+    text-align: center;
+  }
+  .video-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .video-container .small-video {
+    width: 80%;
+    /* margin-top: 10px; */
+    height: auto;
   }
 }
 

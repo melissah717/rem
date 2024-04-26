@@ -19,7 +19,7 @@ function adjustVideoOffsets() {
 
     const viewportWidth = window.innerWidth;
     iframes.forEach((video, index) => {
-      if (viewportWidth >= 430) {
+      if (viewportWidth >= 768) {
         // Apply the offset on larger screens
         const direction = index % 2 === 0 ? -20 : 20;
         gsap.set(video, { yPercent: direction, immediateRender: false });

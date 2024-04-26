@@ -380,6 +380,7 @@ picture .logo-image {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 150px;
   }
 
   .video-container .small-video {

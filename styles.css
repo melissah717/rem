@@ -62,14 +62,8 @@ header {
 }
 
 .header-img {
-  height: 4rem; 
-  width: 4rem; 
-  background-image: url('/images/logo2.jpg'); 
-  background-repeat: no-repeat;
-  background-position: center;  
-  background-size: cover;     
-  border-radius: 50%;
-  border: none;              
+  height: 100px; 
+  width: auto;      
 }
 
 .logo-image {
@@ -342,6 +336,24 @@ section .bg h2 {
 
 .hidden {
   display: none;
+}
+
+#bg {
+  position: relative;
+  background-image: url("images/new.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* White overlay with 80% opacity */
+  z-index: 1; /* Ensures overlay is above the background image but below the content */
 }
 
 .logo-wrapper {

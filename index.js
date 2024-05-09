@@ -13,10 +13,7 @@ gsap.set(innerWrappers, { yPercent: -100 });
 
 
 function adjustVideoOffsets() {
-
     const iframes = gsap.utils.toArray('.small-video');
-
-
     const viewportWidth = window.innerWidth;
     iframes.forEach((video, index) => {
       if (viewportWidth >= 768) {
@@ -144,17 +141,12 @@ document.addEventListener('DOMContentLoaded', function () {
         tl.fromTo([outerWrappers[index], innerWrappers[index]], {
             yPercent: i => {
                 let initialValue = i ? -100 * dFactor : 100 * dFactor;
-                console.log(`Initial yPercent for section ${index}: ${initialValue}`);
                 return initialValue;
             }
         }, {
-            yPercent: 0,
-            onStart: () => console.log(`Animating wrappers to yPercent: 0 in section ${index}`),
-            onComplete: () => console.log(`Wrappers animated to yPercent: 0 in section ${index}`)
+            yPercent: 0
         }, 0)
             .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
-        console.log("index", index)
-        console.log("current index", currentIndex)
         currentIndex = index;
         updateHeaderVisibilityBasedOnSection();
     }

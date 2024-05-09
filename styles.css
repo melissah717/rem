@@ -50,10 +50,10 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2% 2%;
+  padding: 4% 4%;
   width: 100%;
   z-index: 3;
-  height: 7em;
+  height: 9em;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: clamp(0.66rem, 2vw, 1rem);
   letter-spacing: 0.5em;
@@ -348,12 +348,12 @@ section .bg h2 {
 #bg::after {
   content: "";
   position: absolute;
-  top: 0;
+  top: 0; 
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7); /* White overlay with 80% opacity */
-  z-index: 1; /* Ensures overlay is above the background image but below the content */
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
 
 .logo-wrapper {
@@ -404,8 +404,8 @@ picture .logo-image {
 
 @media (max-width: 430px) {
   #quote {
-    font-size: 1.5rem; /* Or smaller, as needed */
-    margin: 20px 0; /* Adjust margin for proper spacing */
+    font-size: 1.2rem; 
+    margin-top: 4em;
     text-align: center;
   }
   .video-container {
@@ -416,8 +416,7 @@ picture .logo-image {
   }
 
   .video-container .small-video {
-    width: 80%;
-    /* margin-top: 10px; */
+    width: 60%;
     height: auto;
   }
 }

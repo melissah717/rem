@@ -386,18 +386,18 @@ picture .logo-image {
 @media (max-width: 430px) {
   #quote {
     font-size: 1rem;
-    text-align: center;
+    text-align: justify;
   }
   .video-container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 150px;
+    margin-bottom: 3em;
   }
 
   .video-container .small-video {
-    width: 80%;
-    /* margin-top: 10px; */
+    width: 75%;
+    margin-top: 10px;
     height: auto;
   }
 }

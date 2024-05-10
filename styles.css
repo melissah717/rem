@@ -393,12 +393,12 @@ picture .logo-image {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 3em;
+    padding: 0;
   }
 
   .video-container .small-video {
-    width: 75%;
-    margin-top: 10px;
+    width: 70%;
+    margin-top: 2px;
     height: auto;
   }
 }
